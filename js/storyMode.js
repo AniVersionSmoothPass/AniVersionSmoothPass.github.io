@@ -82,9 +82,13 @@ var storyMode = ( function () {
 		groupHashesList = result;
 		return result;
 	}
-
+	
+	/* creates limitsList
+ * 	limitsList is a list of size length: each entry corresponds to the number of story per group
+ * 	where the last entry corresponds to the "leftover" entries - 10 if full */
 	function generateStoryGroup (numberOfStories) {
 		var limitsList = [];
+		// ceiling of numberOfStories/10
 		var length = calculateListLength(numberOfStories);
 
 		for (var i=0; i<length; i++) {

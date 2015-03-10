@@ -161,7 +161,7 @@ var memoryGame = (function () {
 						<p><button onclick='memoryGame.sameGameStart()'>\
 						Play Again</button></p>\
 						<p><button onclick='memoryGame.gameFinished()'>\
-						I Got All!</button></p>";
+						I Got All of Them!!!!</button></p>";
 				$('#gamestories').html("<p>Final Score: " + 
 						gameScore.toString() + "/" + numStories.toString() + 
 						" </p>" + buttons);
