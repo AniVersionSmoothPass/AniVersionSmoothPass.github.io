@@ -160,6 +160,7 @@ var storyMode = ( function () {
 	function populateBank () {
 		var person, scene, used, tuple;
 		var personIndex, sceneIndex;
+		// un-aliased copy of lists of all possible ppl and scenes
 		var copyPeopleList = appConstants.getPeopleList().slice(0);
 		var copyScenesList = appConstants.getScenesList().slice(0);
 		var usedPersonList = [];
@@ -169,15 +170,17 @@ var storyMode = ( function () {
 		var finalRecords = [];
 		var storyBankLocal = [];
 		var numOfStories = storyNumber;
-		var groupListLocal = groupList;
+		var groupListLocal = groupList; //refer to notes on what this is
 		//var temp = $("#randomnessTextBoxStoryMode").val();
 
 		//currently uses javascript random 
 		//var storyBankList = Sha256.generate(temp, 43);
+		//looks like this is generating the correct number of stories
 		for (var i=0; i<numOfStories; i++) {
+			//random, valid index of copyPeopleList and copyScenesList
 			personIndex = Math.floor(Math.random() * copyPeopleList.length);
 			sceneIndex = Math.floor(Math.random() * copyScenesList.length);
-
+			//random person and scene
 			person = copyPeopleList[personIndex];
 			scene = copyScenesList[sceneIndex];
 			used = false;
