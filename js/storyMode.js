@@ -109,7 +109,7 @@ var storyMode = ( function () {
 		return limitsList;
 	}
 	function selectBankStory (index) {
-		$.mobile.changePage('#generateRandomness');
+		$.mobile.changePage('#generateRandomnessHere');
 		selectedStoryIndex = index;
 	}
 
