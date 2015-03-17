@@ -247,7 +247,7 @@ var recoveryMechanism = (function() {
 			var indicesCombinations = computeCombinationsOfSizeK(indexArray, k);
 
 			///////////////////// NEW MECHANISM ///////////////////////
-		/*	
+			/*
 			var allCombinations = computeSelectedCombosOfSizeK(groupFullList, k);
 			var indexArray = createIntStringArrayForGroup(groupFullList.length);
 			var indicesCombinations = computeSelectedCombosOfSizeK(indexArray, k);*/
