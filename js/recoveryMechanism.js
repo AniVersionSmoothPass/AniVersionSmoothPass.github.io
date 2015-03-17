@@ -229,8 +229,6 @@ var recoveryMechanism = (function() {
 		}
 
 		//????????
-		//check assertion failure
-		throw "hi";
 		storyMode.getGroupSaltList()[gpIndex] = salt;
 		//update generalRecord's group salt list
 		programVariables.setGeneralRecordGroupSaltList(
@@ -242,9 +240,18 @@ var recoveryMechanism = (function() {
 			var k = MINIMUM_STORY_COUNT + 1;
 			/* need to replace computeCombinationsOfSizeK with my function to generate
  * 			   sequence of sets  */
+			////////////////// OLD MECHANISM /////////////////////////////
+			/*
 			var allCombinations = computeCombinationsOfSizeK(groupFullList, k);
 			var indexArray = createIntStringArrayForGroup(groupFullList.length);
-			var indicesCombinations = computeCombinationsOfSizeK(indexArray, k);
+			var indicesCombinations = computeCombinationsOfSizeK(indexArray, k);*/
+
+			///////////////////// NEW MECHANISM ///////////////////////
+			
+			var allCombinations = computeSelectedCombosOfSizeK(groupFullList, k);
+			var indexArray = createIntStringArrayForGroup(groupFullList.length);
+			var indicesCombinations = computeSelectedCombosOfSizeK(indexArray, k);
+
 			for (var i=0; i<allCombinations.length; i++) {
 				/* for each possible combination:
  * 					for each story in the combination:
