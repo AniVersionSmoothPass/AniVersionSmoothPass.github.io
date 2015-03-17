@@ -21,6 +21,7 @@ var recoveryMechanism = (function() {
 	//recursively compute (bank.size choose k)
 	//does so with any set of objects denoted as bank
 	function computeCombinationsOfSizeK (bank, k) {
+		
 		if (bank.length < k) {
 			return [[]];
 		} else if (bank.length === k) {
@@ -41,6 +42,65 @@ var recoveryMechanism = (function() {
 			return result;
 		}
 	}
+//////////////////////////////////////////////////////////////////
+
+	function isSubset (A, B) {
+		//checks if A is a subset of B
+		for (int i=0;i<A.length;i++) {
+			var found = false;
+			int j = 0;
+			while (!found && j < B.length){
+				if (A[i] == B[j]) found = true;
+				j++;
+			}
+			if (found == false) return false;
+		}
+		return true;
+	}
+
+
+	function impact (S, subs) {
+		var num_of_subsets = 0;
+		for (int i=0;i<subs.length;i++) {
+			if (isSubset(subs[i],S) num_of_subsets++;
+		}
+		return num_of_subsets;
+	}
+
+	function deleteSubsets (S, subs) {
+		var size = subs.length;
+		for (int i=0;i<size;i++) {
+			if (isSubset(subs[i],S) subs = subs.splice(i,1);
+		}
+	}
+
+	function computeSelectedCombosOfSizeK (bank, k) {
+		//translation of python prog into javascript
+		//calculating selected combos - min superset cover
+		var subsets = computeCombinationsOfSizeK(bank,k-1);
+		var supersets = computeCombinationsOfSizeK(bank,k);
+		//want to loop through all the supersets and figure out which of these
+		//has the greatest number of subsets in "subsets". 
+		var filteredSubs = [];
+		var maxImpact,maxS;
+		while (subsets.length > 0) {
+			maxImpact = 0;
+			maxS = [];
+			for (int i=0;i<supersets.length;i++){
+				if (maxS == []) maxS = supersets[i];
+				if (impact(supersets[i],subsets) > maxImpact){
+					maxImpact = impact(supersets[i],subsets);
+					maxS = supersets[i];	
+				}
+			}
+				
+			filteredSubs.push(maxS);
+			deleteSubsets(maxS,subsets);
+		}
+		return filteredSubs;
+	}
+
+/////////////////////////////////////////////////////////////////////
 
 	function compareHashToExistingOnes (hashResult) {
 		//true if hashResult is found in allHashes; false otherwise
@@ -112,7 +172,7 @@ var recoveryMechanism = (function() {
 		var round = NUM_OF_ROUNDS;
 		var localBCrypt = new bCrypt();
 
-		// generate salt using issac 
+	// generate salt using issac 
 		try {
 			if (saltStr == undefined) {
 				salt = localBCrypt.gensalt(round);
@@ -150,6 +210,8 @@ var recoveryMechanism = (function() {
 		}
 		return result;
 	}
+	
+		
 
 	/*INITIAL COMPUTATION OF STORY HASHES*/
 	// Note: same as computeHashesForGroup
@@ -178,9 +240,18 @@ var recoveryMechanism = (function() {
 			var k = MINIMUM_STORY_COUNT + 1;
 			/* need to replace computeCombinationsOfSizeK with my function to generate
  * 			   sequence of sets  */
+			////////////////// OLD MECHANISM /////////////////////////////
+			
 			var allCombinations = computeCombinationsOfSizeK(groupFullList, k);
 			var indexArray = createIntStringArrayForGroup(groupFullList.length);
 			var indicesCombinations = computeCombinationsOfSizeK(indexArray, k);
+
+			///////////////////// NEW MECHANISM ///////////////////////
+		/*	
+			var allCombinations = computeSelectedCombosOfSizeK(groupFullList, k);
+			var indexArray = createIntStringArrayForGroup(groupFullList.length);
+			var indicesCombinations = computeSelectedCombosOfSizeK(indexArray, k);*/
+
 			for (var i=0; i<allCombinations.length; i++) {
 				/* for each possible combination:
  * 					for each story in the combination:
