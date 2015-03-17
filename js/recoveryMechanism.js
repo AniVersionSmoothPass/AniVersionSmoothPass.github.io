@@ -241,16 +241,16 @@ var recoveryMechanism = (function() {
 			/* need to replace computeCombinationsOfSizeK with my function to generate
  * 			   sequence of sets  */
 			////////////////// OLD MECHANISM /////////////////////////////
-			/*
+			
 			var allCombinations = computeCombinationsOfSizeK(groupFullList, k);
 			var indexArray = createIntStringArrayForGroup(groupFullList.length);
-			var indicesCombinations = computeCombinationsOfSizeK(indexArray, k);*/
+			var indicesCombinations = computeCombinationsOfSizeK(indexArray, k);
 
 			///////////////////// NEW MECHANISM ///////////////////////
-			
+			/*
 			var allCombinations = computeSelectedCombosOfSizeK(groupFullList, k);
 			var indexArray = createIntStringArrayForGroup(groupFullList.length);
-			var indicesCombinations = computeSelectedCombosOfSizeK(indexArray, k);
+			var indicesCombinations = computeSelectedCombosOfSizeK(indexArray, k);*/
 
 			for (var i=0; i<allCombinations.length; i++) {
 				/* for each possible combination:
