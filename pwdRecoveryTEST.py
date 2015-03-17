@@ -27,15 +27,44 @@ def greedyPwdRecover():
 	while len(fives) > 0:
 		maxImpact = 0
 		maxS = None
+		candidateSubs = []
 		for S in sixes:
 			if maxS == None: maxS = S
+			# check intersection with existing sets in greedySubs			
 			if impact(S,fives) > maxImpact:
 				maxImpact = impact(S,fives)
 				maxS = S
+				candidateSubs = [S]
+			elif impact(S,fives) == maxImpact:
+				candidateSubs += [S]
+		maxS = leastIntersection(candidateSubs,greedySubs)
 		greedySubs += [maxS]
 		deleteSubsets(maxS,fives)
 	return greedySubs
 
+def leastIntersection(subsets,existingSubs):
+	if existingSubs == []: return subsets[0]
+	minScore = getScore(subsets[0],existingSubs)
+	minSet = subsets[0]
+	for S in subsets:
+		#need to find the least intersecting set
+		score = getScore(S,existingSubs)
+		if score < minScore:
+			minScore = score
+			minSet = S
+	return minSet
+
+def getScore(S,subsets):
+	#1st priority: max disjoint sets
+	#2nd priority: min shared elements in the max intersection
+	disjoint = 0
+	maxIntersection = 0
+	for T in subsets:
+		if len(S&T) == 0: disjoint += 1
+		else:
+			maxIntersection = max(maxIntersection,len(S&T))
+	return 10*disjoint + maxIntersection
+	
 def impact(S,fives):
 	numOfSubsets = 0
 	for T in fives:
@@ -67,5 +96,12 @@ def testGreedy():
 
 # print choose(10,5)
 
-print len(greedyPwdRecover())
+print greedyPwdRecover()
 # print choose(10,6)
+
+
+
+
+
+
+	
