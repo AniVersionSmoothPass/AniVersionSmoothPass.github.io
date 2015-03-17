@@ -229,6 +229,8 @@ var recoveryMechanism = (function() {
 		}
 
 		//????????
+		//check assertion failure
+		throw "hi";
 		storyMode.getGroupSaltList()[gpIndex] = salt;
 		//update generalRecord's group salt list
 		programVariables.setGeneralRecordGroupSaltList(
