@@ -46,6 +46,8 @@ var recoveryMechanism = (function() {
 
 	function isSubset (A, B) {
 		//checks if A is a subset of B
+		console.log(A);
+		console.log(B);
 		for (var i=0;i<A.length;i++) {
 			var found = false;
 			var j = 0;
