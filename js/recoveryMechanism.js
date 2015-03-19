@@ -65,7 +65,7 @@ var recoveryMechanism = (function() {
 		var num_of_subsets = 0;
 		for (var i=0;i<subs.length;i++) {
 			if (isSubset(subs[i],S)) num_of_subsets++;
-			console.log("impact");
+			console.log("impact\n");
 		}
 		return num_of_subsets;
 	}
@@ -74,7 +74,7 @@ var recoveryMechanism = (function() {
 		var size = subs.length;
 		for (var i=0;i<size;i++) {
 			if (isSubset(subs[i],S)) subs = subs.splice(i,1);
-			console.log("delete");
+			console.log("delete\n");
 		}
 	}
 
