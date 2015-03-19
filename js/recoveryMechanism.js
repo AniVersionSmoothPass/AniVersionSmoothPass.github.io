@@ -72,8 +72,9 @@ var recoveryMechanism = (function() {
 
 	function deleteSubsets (S, subs) {
 		var size = subs.length;
+		var dummy = 17;
 		for (var i=0;i<size;i++) {
-			if (isSubset(subs[i],S)) subs = subs.splice(i,1);
+			if (isSubset(subs[i],S)) dummy = 42;//subs = subs.splice(i,1);
 			console.log("delete\n");
 		}
 	}
