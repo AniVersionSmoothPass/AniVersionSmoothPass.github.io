@@ -70,7 +70,7 @@ var recoveryMechanism = (function() {
 	function deleteSubsets (S, subs) {
 		var size = subs.length;
 		for (var i=0;i<size;i++) {
-			if (isSubset(subs[i],S) subs = subs.splice(i,1);
+			if (isSubset(subs[i],S)) subs = subs.splice(i,1);
 		}
 	}
 
