@@ -46,8 +46,8 @@ var recoveryMechanism = (function() {
 
 	function isSubset (A, B) {
 		//checks if A is a subset of B
-		console.log(A);
-		console.log(B);
+		//console.log(A);
+		//console.log(B);
 		for (var i=0;i<A.length;i++) {
 			var found = false;
 			var j = 0;
@@ -65,7 +65,6 @@ var recoveryMechanism = (function() {
 		var num_of_subsets = 0;
 		for (var i=0;i<subs.length;i++) {
 			if (isSubset(subs[i],S)) num_of_subsets++;
-			console.log("impact\n");
 		}
 		return num_of_subsets;
 	}
