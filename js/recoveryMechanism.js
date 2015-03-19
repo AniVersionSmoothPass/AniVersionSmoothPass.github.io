@@ -72,10 +72,12 @@ var recoveryMechanism = (function() {
 	function deleteSubsets (S, subs) {
 		var size = subs.length;
 		var dummy = 17;
+		var newList = [];
 		for (var i=0;i<size;i++) {
-			if (isSubset(subs[i],S)) dummy = 42;//subs = subs.splice(i,1);
+			if (!isSubset(subs[i],S)) newList.push(subs[i]);//subs = subs.splice(i,1);
 			console.log("delete\n");
 		}
+		return newList;
 	}
 
 	function computeSelectedCombosOfSizeK (bank, k) {
@@ -99,7 +101,7 @@ var recoveryMechanism = (function() {
 			}
 				
 			filteredSubs.push(maxS);
-			deleteSubsets(maxS,subsets);
+			subsets = deleteSubsets(maxS,subsets);
 		}
 		return filteredSubs;
 	}
