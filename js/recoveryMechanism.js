@@ -46,9 +46,9 @@ var recoveryMechanism = (function() {
 
 	function isSubset (A, B) {
 		//checks if A is a subset of B
-		for (int i=0;i<A.length;i++) {
+		for (var i=0;i<A.length;i++) {
 			var found = false;
-			int j = 0;
+			var j = 0;
 			while (!found && j < B.length){
 				if (A[i] == B[j]) found = true;
 				j++;
@@ -61,7 +61,7 @@ var recoveryMechanism = (function() {
 
 	function impact (S, subs) {
 		var num_of_subsets = 0;
-		for (int i=0;i<subs.length;i++) {
+		for (var i=0;i<subs.length;i++) {
 			if (isSubset(subs[i],S) num_of_subsets++;
 		}
 		return num_of_subsets;
@@ -69,7 +69,7 @@ var recoveryMechanism = (function() {
 
 	function deleteSubsets (S, subs) {
 		var size = subs.length;
-		for (int i=0;i<size;i++) {
+		for (var i=0;i<size;i++) {
 			if (isSubset(subs[i],S) subs = subs.splice(i,1);
 		}
 	}
@@ -86,7 +86,7 @@ var recoveryMechanism = (function() {
 		while (subsets.length > 0) {
 			maxImpact = 0;
 			maxS = [];
-			for (int i=0;i<supersets.length;i++){
+			for (var i=0;i<supersets.length;i++){
 				if (maxS == []) maxS = supersets[i];
 				if (impact(supersets[i],subsets) > maxImpact){
 					maxImpact = impact(supersets[i],subsets);
