@@ -62,7 +62,7 @@ var recoveryMechanism = (function() {
 	function impact (S, subs) {
 		var num_of_subsets = 0;
 		for (var i=0;i<subs.length;i++) {
-			if (isSubset(subs[i],S) num_of_subsets++;
+			if (isSubset(subs[i],S)) num_of_subsets++;
 		}
 		return num_of_subsets;
 	}
