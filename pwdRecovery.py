@@ -19,8 +19,8 @@ def choose(n,k):
 	return math.factorial(n)/(math.factorial(k)*math.factorial(n-k))
 
 def greedyPwdRecover():
-	fives = [set(i) for i in getSubsets(10,5)]
-	sixes = [set(i) for i in getSubsets(10,6)]
+	fives = [set(i) for i in getSubsets(10,7)]
+	sixes = [set(i) for i in getSubsets(10,8)]
 	#want to loop through all the sixes and figure out which of those has
 	#the greatest number of subsets in fives
 	greedySubs = []
@@ -49,7 +49,7 @@ def deleteSubsets(S,fives):
 			fives.remove(T)
 
 def testGreedy():
-	pwdSet = getSubsets(10,5)[random.randint(0,choose(10,5)-1)]
+	pwdSet = getSubsets(10,7)[random.randint(0,choose(10,7)-1)]
 	random.shuffle(pwdSet)
 	# public = pwdSet[:-1]
 	# print sorted(public) in getSubsets(10,5)
@@ -63,7 +63,7 @@ def testGreedy():
 	return index
 
 
-# print testGreedy()
+print testGreedy()
 
 # print choose(10,5)
 
