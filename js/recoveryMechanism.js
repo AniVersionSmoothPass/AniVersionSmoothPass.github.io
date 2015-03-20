@@ -153,13 +153,13 @@ var recoveryMechanism = (function() {
 		var boolGroupList = compareHashToExistingOnes(hash);
 		if (boolGroupList[0]) {
 			//if result found, store the action & object
-			
 			//parse group list and turn into an int list
 			var groupIndicesList = 
 					convertIndicesStringToArray(boolGroupList[1]);
 			for (var i=0; i<groupIndicesList.length; i++) {
 				index = groupIndicesList[i];
-				if ( (inputIndicesList.indexOf(index) < 0) && 
+				if (inputIndicesList.indexOf(index) < 0) inputIndicesList.push(index);
+				if ( //(inputIndicesList.indexOf(index) < 0) && 
 					(missingStoryIndex == index) ) {
 					found = true;
 					recoveryResult = pwGuess;
@@ -168,6 +168,9 @@ var recoveryMechanism = (function() {
 					temp = pwGuess.split("a")[1].split("o");
 					action = appConstants.getActionsList()[parseInt(temp[0])];
 					object = appConstants.getObjectsList()[parseInt(temp[1])];
+					console.log('PRINT NUM OF STORIES FOUND\n');
+					console.log(inputIndicesList.length);
+					console.log('\n');
 					createRecoveryResultPage(action, object);
 				}
 			}
