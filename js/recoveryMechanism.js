@@ -46,8 +46,6 @@ var recoveryMechanism = (function() {
 
 	function isSubset (A, B) {
 		//checks if A is a subset of B
-		//console.log(A);
-		//console.log(B);
 		for (var i=0;i<A.length;i++) {
 			var found = false;
 			var j = 0;
@@ -74,8 +72,7 @@ var recoveryMechanism = (function() {
 		var dummy = 17;
 		var newList = [];
 		for (var i=0;i<size;i++) {
-			if (!isSubset(subs[i],S)) newList.push(subs[i]);//subs = subs.splice(i,1);
-			console.log("delete\n");
+			if (!isSubset(subs[i],S)) newList.push(subs[i]);
 		}
 		return newList;
 	}
