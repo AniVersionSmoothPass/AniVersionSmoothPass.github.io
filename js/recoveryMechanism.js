@@ -172,6 +172,9 @@ var recoveryMechanism = (function() {
 				}
 			}
 			if (!found) alert('Couldnt find hash!');
+			console.log("HEYYY LOOK AT MEEEE\n");
+			console.log(groupIndicesList.length);
+			console.log("\n");
 		}
 	}
 
