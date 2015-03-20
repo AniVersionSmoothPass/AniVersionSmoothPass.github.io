@@ -316,10 +316,6 @@ var recoveryMechanism = (function() {
 
 		//less than minimum count cannot perform recovery
 		if (inputCount < MINIMUM_STORY_COUNT) {
-			//DEBUG CHECK: DELETE THIS ASAP!!!
-			a = computeSelectedCombosOfSizeK([1,2,3,4,5,6,7,8,9,10],6);
-			console.log('THIS IS THE NUMBER OF SETS: SHOULD BE 56????\n');
-			console.log(a.length);console.log('\n');
 			//maybe fix this redirect back to recovery page?
 			alert('Cannot Recover Missing Story without Five Known Ones!');
 			return;
