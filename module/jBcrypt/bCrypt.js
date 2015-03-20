@@ -469,7 +469,7 @@ bCrypt.prototype.crypt_raw = function(password, salt, log_rounds, callback, prog
  *      is complete.
  */
 bCrypt.prototype.hashpw = function(password, salt, callback, progress, pwGuess) {
-	//console.log('In BCRYPT hashpw the string hashed is ' + password + ' salt is ' + salt);
+	console.log('In BCRYPT hashpw the string hashed is ' + password + ' salt is ' + salt);
 	var real_salt;
 	var passwordb = [];
 	var saltb = [];

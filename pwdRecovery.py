@@ -12,15 +12,22 @@ def getSubsets(n,k):
 				a = copy.copy(subset) + [i]
 				auxList += [a]
 		setList = auxList
-	assert(len(setList) == choose(n,k))
 	return setList
+
+	
+def stringify(L):
+	result = ""
+	for elem in L:
+		result += str(elem)
+	return result	
+		
 
 def choose(n,k):
 	return math.factorial(n)/(math.factorial(k)*math.factorial(n-k))
 
-def greedyPwdRecover():
-	fives = [set(i) for i in getSubsets(10,7)]
-	sixes = [set(i) for i in getSubsets(10,8)]
+def greedyPwdRecover(n,k):
+	fives = [set(i) for i in getSubsets(n,k)]
+	sixes = [set(i) for i in getSubsets(n,k+1)]
 	#want to loop through all the sixes and figure out which of those has
 	#the greatest number of subsets in fives
 	greedySubs = []
@@ -44,7 +51,8 @@ def impact(S,fives):
 	return numOfSubsets
 
 def deleteSubsets(S,fives):
-	for T in fives:
+	temp = [i for i in fives]
+	for T in temp:
 		if T.issubset(S):
 			fives.remove(T)
 
@@ -63,9 +71,24 @@ def testGreedy():
 	return index
 
 
-print testGreedy()
+#print testGreedy()
 
 # print choose(10,5)
-
+"""
+print (greedyPwdRecover())
 print len(greedyPwdRecover())
 # print choose(10,6)
+print getSubsets(6,4)
+"""
+"""
+fives = [set(i) for i in getSubsets(6,3)]
+sixes = [set(i) for i in getSubsets(6,4)]
+print "len: ", len(fives)
+print impact([1,2,3,4],fives)
+deleteSubsets([1,2,3,4],fives)
+print "deleted"
+print fives
+print choose(6,3) - len(fives)
+print impact([2,4,5,6],fives)
+"""
+print greedyPwdRecover(6,3)
