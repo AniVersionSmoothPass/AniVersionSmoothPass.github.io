@@ -147,6 +147,9 @@ var recoveryMechanism = (function() {
 
 	function callbackFnForRecovery (hash, pwGuess) {
 		var index, temp, action, object;
+		var found = false;
+		//what does compareHash return? list of [bool,index] where bool is 
+		//true if index is in the hash
 		var boolGroupList = compareHashToExistingOnes(hash);
 		if (boolGroupList[0]) {
 			//if result found, store the action & object
@@ -158,6 +161,7 @@ var recoveryMechanism = (function() {
 				index = groupIndicesList[i];
 				if ( (inputIndicesList.indexOf(index) < 0) && 
 					(missingStoryIndex == index) ) {
+					found = true;
 					recoveryResult = pwGuess;
 					//generate recovery result page
 					//temp = pwGuess.split('ing');
@@ -167,6 +171,7 @@ var recoveryMechanism = (function() {
 					createRecoveryResultPage(action, object);
 				}
 			}
+			if (!found) alert('Couldnt find hash!');
 		}
 	}
 
@@ -278,6 +283,9 @@ var recoveryMechanism = (function() {
 		return;
 	}
 
+
+
+	/* Getting user input: recovery mechanism is most likely called here  */
 	function gatherUserInput () {
 		//index is the position of the missing story in group
 		var inputId, inputObj, inputAct, userInput, stroyGuess, groupGuess;
@@ -309,13 +317,19 @@ var recoveryMechanism = (function() {
 			alert('Cannot Recover Missing Story without Five Known Ones!');
 			return;
 		}
+
+		/////////// BRUTE FORCE CHECK FOR SOLUTIONS //////////////////////
+		////////// OLD MECHANISM  ///////////////////////////////////////
+		
 		//loop through all possible actions and objects combined with known ones
 		for (var i=0; i<appConstants.getActionsList().length; i++) {
 			guessAct = appConstants.getActionsList()[i];
 			for (var j=0; j<appConstants.getObjectsList().length; j++) {
 				guessObj = appConstants.getObjectsList()[j];
+				//putting together the guess
 				storyGuess = appConstants.getStrActIndex(guessAct) + 
 						appConstants.getStrObjIndex(guessObj);
+				//guess is of the form a1o9a68o43...etc. 
 				groupGuess = inputFirstHalf + storyGuess + inputSecondHalf;
 
 				//no way to short-circuit since bCrypt uses a callback fn
@@ -324,6 +338,9 @@ var recoveryMechanism = (function() {
 			}
 		}
 
+		/////////////////// NEW MECHANISM  ///////////////////////////////
+		// have a list of known stories - if we go through all the sets but 
+		// don't find the desired index, use another one of the known stories
 
 	}
 
