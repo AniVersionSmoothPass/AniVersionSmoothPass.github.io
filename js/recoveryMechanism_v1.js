@@ -46,9 +46,9 @@ var recoveryMechanism = (function() {
 
 	function isSubset (A, B) {
 		//checks if A is a subset of B
-		for (int i=0;i<A.length;i++) {
+		for (var i=0;i<A.length;i++) {
 			var found = false;
-			int j = 0;
+			var j = 0;
 			while (!found && j < B.length){
 				if (A[i] == B[j]) found = true;
 				j++;
@@ -61,17 +61,19 @@ var recoveryMechanism = (function() {
 
 	function impact (S, subs) {
 		var num_of_subsets = 0;
-		for (int i=0;i<subs.length;i++) {
-			if (isSubset(subs[i],S) num_of_subsets++;
+		for (var i=0;i<subs.length;i++) {
+			if (isSubset(subs[i],S)) num_of_subsets++;
 		}
 		return num_of_subsets;
 	}
 
 	function deleteSubsets (S, subs) {
 		var size = subs.length;
-		for (int i=0;i<size;i++) {
-			if (isSubset(subs[i],S) subs = subs.splice(i,1);
+		var newList = [];
+		for (var i=0;i<size;i++) {
+			if (!isSubset(subs[i],S)) newList.push(subs[i]);
 		}
+		return newList;
 	}
 
 	function computeSelectedCombosOfSizeK (bank, k) {
@@ -86,7 +88,7 @@ var recoveryMechanism = (function() {
 		while (subsets.length > 0) {
 			maxImpact = 0;
 			maxS = [];
-			for (int i=0;i<supersets.length;i++){
+			for (var i=0;i<supersets.length;i++){
 				if (maxS == []) maxS = supersets[i];
 				if (impact(supersets[i],subsets) > maxImpact){
 					maxImpact = impact(supersets[i],subsets);
@@ -95,7 +97,7 @@ var recoveryMechanism = (function() {
 			}
 				
 			filteredSubs.push(maxS);
-			deleteSubsets(maxS,subsets);
+			subsets = deleteSubsets(maxS,subsets);
 		}
 		return filteredSubs;
 	}
@@ -144,26 +146,35 @@ var recoveryMechanism = (function() {
 
 	function callbackFnForRecovery (hash, pwGuess) {
 		var index, temp, action, object;
+		var found = false;
+		//what does compareHash return? list of [bool,index] where bool is 
+		//true if index is in the hash
 		var boolGroupList = compareHashToExistingOnes(hash);
 		if (boolGroupList[0]) {
 			//if result found, store the action & object
-			
 			//parse group list and turn into an int list
 			var groupIndicesList = 
 					convertIndicesStringToArray(boolGroupList[1]);
 			for (var i=0; i<groupIndicesList.length; i++) {
 				index = groupIndicesList[i];
-				if ( (inputIndicesList.indexOf(index) < 0) && 
+				if (inputIndicesList.indexOf(index) < 0) inputIndicesList.push(index);
+				if ( //(inputIndicesList.indexOf(index) < 0) && 
 					(missingStoryIndex == index) ) {
+					found = true;
 					recoveryResult = pwGuess;
 					//generate recovery result page
 					//temp = pwGuess.split('ing');
 					temp = pwGuess.split("a")[1].split("o");
 					action = appConstants.getActionsList()[parseInt(temp[0])];
 					object = appConstants.getObjectsList()[parseInt(temp[1])];
+					console.log('PRINT NUM OF STORIES FOUND\n');
+					console.log(inputIndicesList.length);
+					console.log('\n');
 					createRecoveryResultPage(action, object);
 				}
 			}
+			if (!found) alert('Couldnt find hash!');
+			console.log('HEYYY LOOK AT MEEEE\n');
 		}
 	}
 
@@ -241,16 +252,16 @@ var recoveryMechanism = (function() {
 			/* need to replace computeCombinationsOfSizeK with my function to generate
  * 			   sequence of sets  */
 			////////////////// OLD MECHANISM /////////////////////////////
-			
+			/*
 			var allCombinations = computeCombinationsOfSizeK(groupFullList, k);
 			var indexArray = createIntStringArrayForGroup(groupFullList.length);
-			var indicesCombinations = computeCombinationsOfSizeK(indexArray, k);
+			var indicesCombinations = computeCombinationsOfSizeK(indexArray, k);*/
 
 			///////////////////// NEW MECHANISM ///////////////////////
-			/*
+			
 			var allCombinations = computeSelectedCombosOfSizeK(groupFullList, k);
 			var indexArray = createIntStringArrayForGroup(groupFullList.length);
-			var indicesCombinations = computeSelectedCombosOfSizeK(indexArray, k);*/
+			var indicesCombinations = computeSelectedCombosOfSizeK(indexArray, k);
 
 			for (var i=0; i<allCombinations.length; i++) {
 				/* for each possible combination:
@@ -275,6 +286,9 @@ var recoveryMechanism = (function() {
 		return;
 	}
 
+
+
+	/* Getting user input: recovery mechanism is most likely called here  */
 	function gatherUserInput () {
 		//index is the position of the missing story in group
 		var inputId, inputObj, inputAct, userInput, stroyGuess, groupGuess;
@@ -306,13 +320,19 @@ var recoveryMechanism = (function() {
 			alert('Cannot Recover Missing Story without Five Known Ones!');
 			return;
 		}
+
+		/////////// BRUTE FORCE CHECK FOR SOLUTIONS //////////////////////
+		////////// OLD MECHANISM  ///////////////////////////////////////
+		
 		//loop through all possible actions and objects combined with known ones
 		for (var i=0; i<appConstants.getActionsList().length; i++) {
 			guessAct = appConstants.getActionsList()[i];
 			for (var j=0; j<appConstants.getObjectsList().length; j++) {
 				guessObj = appConstants.getObjectsList()[j];
+				//putting together the guess
 				storyGuess = appConstants.getStrActIndex(guessAct) + 
 						appConstants.getStrObjIndex(guessObj);
+				//guess is of the form a1o9a68o43...etc. 
 				groupGuess = inputFirstHalf + storyGuess + inputSecondHalf;
 
 				//no way to short-circuit since bCrypt uses a callback fn
@@ -321,6 +341,9 @@ var recoveryMechanism = (function() {
 			}
 		}
 
+		/////////////////// NEW MECHANISM  ///////////////////////////////
+		// have a list of known stories - if we go through all the sets but 
+		// don't find the desired index, use another one of the known stories
 
 	}
 
