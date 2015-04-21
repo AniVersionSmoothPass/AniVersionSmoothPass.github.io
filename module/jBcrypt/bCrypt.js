@@ -471,6 +471,7 @@ bCrypt.prototype.crypt_raw = function(password, salt, log_rounds, callback, prog
 bCrypt.prototype.hashpw = function(password, salt, callback, progress, pwGuess) {
 	console.log('In BCRYPT hashpw the string hashed is ' + password + ' salt is ' + salt);
 	var real_salt;
+    //PASSWORDB seems to be a password bank
 	var passwordb = [];
 	var saltb = [];
 	var hashed = [];
@@ -502,13 +503,15 @@ bCrypt.prototype.hashpw = function(password, salt, callback, progress, pwGuess) 
 	rounds = r1 + r2;
 	real_salt = salt.substring(off + 3, off + 25);
 
-
+    console.log(password);console.log("\n");
 
 	// password = password + (minor >= 'a' ? "\000" : "");
 	// for (var r = 0; r < password.length; r++) {
 	// 	passwordb.push(this.getByte(password.charAt(r)));
 	// }
 	// saltb = this.decode_base64(real_salt, this.BCRYPT_SALT_LEN);
+	//
+	// Here, password is what we input to check
 	password = password + (minor >= 'a' ? "\000" : "");
     for (var n = 0; n < password.length; n++) {
         var c = password.charCodeAt(n);
