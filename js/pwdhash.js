@@ -13,7 +13,7 @@
  *  * Initialize page with default hashing parameters.
  *   */
 
-var pwdhash = (function() {
+var pwdhash = (function () {
   var module = {};
   console.log("is anything happening?\n")
   function Init() {
@@ -50,12 +50,12 @@ var pwdhash = (function() {
   }
 
   //CONTROLLER METHODS
-  function module.Generate = function (){
+  module.Generate = function (){
     Generate();
     return;
   }
 
-  function module.simpleHash = function(data,domain){
+  module.simpleHash = function(data,domain){
     var result = new String(new SPH_HashedPassword(data,domain));
     return result;
   }
