@@ -154,6 +154,7 @@ var accountPage = (function() {
 					record.set("rules", newRuleList);
 				}
 			}
+            console.log('what information have I entered so far???\n');
 			storyList = parseStringToNestedArrays(storyList);
 			var records = programVariables.getStories();
 			for (var i=0; i<records.length; i++) {
