@@ -51,8 +51,7 @@ var pwdhash = (function () {
 
   //CONTROLLER METHODS
   module.Generate = function (){
-    Generate();
-    return;
+    return Generate();
   }
 
   module.simpleHash = function(data,domain){
