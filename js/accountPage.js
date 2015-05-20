@@ -303,11 +303,14 @@ var accountPage = (function() {
 		var numberOfWords = 0;
 		var wordsList = [];
 		var word;
+		var SPHval;
 		var trie = appConstants.getTrie();
 		while (stop < input.length) {
 			stop += 1;
 			word = input.slice(current, stop);
 			console.log(word);
+			SPHval = new String(new SPH_HashedPassword(data, domain));
+			console.log(SPHval)
 			if ((word != '') && (trie.get(word) != null)) {
 				numberOfWords += 1;
 				wordsList.push(word);
