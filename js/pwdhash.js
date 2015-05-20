@@ -14,6 +14,7 @@
  *   */
 
 var pwdhash = (function() {
+  var module = {};
   function Init() {
     document.hashform.domain.value = "http://www.example.com/";
     document.hashform.sitePassword.value = "";
