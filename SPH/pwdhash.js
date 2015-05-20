@@ -12,35 +12,45 @@
 /*
  *  * Initialize page with default hashing parameters.
  *   */
-function Init() {
-  document.hashform.domain.value = "http://www.example.com/";
-  document.hashform.sitePassword.value = "";
-  document.hashform.hashedPassword.value = "Press Generate";
-  document.hashform.hashedPassword.disabled = true;
-}
+var pwdhash = (function(){
+  var module = {};
+  function Init() {
+    document.hashform.domain.value = "http://www.example.com/";
+    document.hashform.sitePassword.value = "";
+    document.hashform.hashedPassword.value = "Press Generate";
+    document.hashform.hashedPassword.disabled = true;
+  }
 
-var SPH_kPasswordPrefix = "@@";
+  var SPH_kPasswordPrefix = "@@";
 
-/*
- *  * Returns a conforming hashed password generated from the form's field values.
- *   */
-function Generate()
-{
-  var uri = document.hashform.domain.value;
-  var domain = (new SPH_DomainExtractor()).extractDomain(uri);
-  var size = SPH_kPasswordPrefix.length;
-  var data = document.hashform.sitePassword.value;
-  if (data.substring(0, size) == SPH_kPasswordPrefix)
-    data = data.substring(size);
-  var result = new String(new SPH_HashedPassword(data, domain));
-  return result;
-}
+  /*
+   *  * Returns a conforming hashed password generated from the form's field values.
+   *   */
+  function Generate()
+  {
+    var uri = document.hashform.domain.value;
+    var domain = (new SPH_DomainExtractor()).extractDomain(uri);
+    var size = SPH_kPasswordPrefix.length;
+    var data = document.hashform.sitePassword.value;
+    if (data.substring(0, size) == SPH_kPasswordPrefix)
+      data = data.substring(size);
+    var result = new String(new SPH_HashedPassword(data, domain));
+    return result;
+  }
 
-/*
- *  * Obtain a conforming hashed password and put it in the hashed password field
- *   */
-function GenerateToTextField()
-{
-  document.hashform.hashedPassword.value = Generate();
-  document.hashform.hashedPassword.disabled = false;
-}
+  /*
+   *  * Obtain a conforming hashed password and put it in the hashed password field
+   *   */
+  function GenerateToTextField()
+  {
+    document.hashform.hashedPassword.value = Generate();
+    document.hashform.hashedPassword.disabled = false;
+  }
+
+  module.simpleHash = function(data,domain) {
+    var result = new String(new SPH_HashedPassword(data, domain));
+    return result;
+  }
+
+}());
+
