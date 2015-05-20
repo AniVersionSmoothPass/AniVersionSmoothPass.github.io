@@ -48,12 +48,12 @@ var pwdhash = (function() {
   }
 
   //CONTROLLER METHODS
-  function module.Generate() = function (){
+  function module.Generate = function (){
     Generate();
     return;
   }
 
-  function module.simpleHash(data,domain){
+  function module.simpleHash = function(data,domain){
     var result = new String(new SPH_HashedPassword(data,domain));
     return result;
   }
