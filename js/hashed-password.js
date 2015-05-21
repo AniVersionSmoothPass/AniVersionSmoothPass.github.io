@@ -38,7 +38,7 @@ var hashed_pwd = (function() {
       console.log("before md5...\n");
       console.log(typeof realm);
       var hash = md5.b64_hmac_md5(password, realm);
-      console.log("did it pass the first md5????");
+      // console.log("did it pass the first md5????");
       var size = password.length + SPH_kPasswordPrefix.length;
       var nonalphanumeric = password.match(/\W/) != null;
       var result = this._applyConstraints(hash, size, nonalphanumeric);
@@ -88,7 +88,7 @@ var hashed_pwd = (function() {
     console.log(typeof data);
     console.log("testing domain...");
     console.log(typeof domain);
-    var result = new String( new SPH_HashedPassword(data,domain));
+    var result = String( new SPH_HashedPassword(data,domain));
     return result;
   }
 
