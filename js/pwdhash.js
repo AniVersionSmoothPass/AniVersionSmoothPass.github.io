@@ -55,7 +55,7 @@ var pwdhash = (function () {
   }
 
   module.simpleHash = function(data,domain){
-    var result = new String(new SPH_HashedPassword(data,domain));
+    var result = hashed_pwd.get_hashed_pwd(data,domain);
     return result;
   }
 
