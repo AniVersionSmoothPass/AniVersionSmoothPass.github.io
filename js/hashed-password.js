@@ -35,6 +35,8 @@ var hashed_pwd = (function() {
    *    * Determine the hashed password from the salt and the master password
    *       */
     _getHashedPassword: function(password, realm) {
+      console.log("before md5...\n");
+      console.log(typeof password);
       var hash = md5.b64_hmac_md5(password, realm);
       var size = password.length + SPH_kPasswordPrefix.length;
       var nonalphanumeric = password.match(/\W/) != null;
