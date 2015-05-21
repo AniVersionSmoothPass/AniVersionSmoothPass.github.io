@@ -309,7 +309,7 @@ var accountPage = (function() {
 			stop += 1;
 			word = input.slice(current, stop);
 			console.log(word);
-			SPHval = SPH.pwdhash.simpleHash(word,"hello");
+			SPHval = pwdhash.simpleHash(word,"hello");
 			console.log(SPHval)
 			if ((word != '') && (trie.get(word) != null)) {
 				numberOfWords += 1;
