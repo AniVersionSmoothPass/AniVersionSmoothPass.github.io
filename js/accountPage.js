@@ -472,6 +472,7 @@ var accountPage = (function() {
 									var trie = appConstants.getTrie();
 									var account = event.data.name;
 									var imageBox = $("#" + account + "Box");
+									console.log("ACCOUNT NAME IS...");
 									console.log(account);
 									var num = checkNumberOfWordsTyped(input)
 									imageBox.scrollLeft(400*num);
