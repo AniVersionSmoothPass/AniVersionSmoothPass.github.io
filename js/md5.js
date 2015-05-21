@@ -164,6 +164,8 @@ var md5 = (function(){
    *   */
   function core_hmac_md5(key, data)
   {
+    console.log("at the core \n");
+    console.log(typeof key);
     var bkey = str2binl(key);
     if(bkey.length > 16) bkey = core_md5(bkey, key.length * chrsz);
 
