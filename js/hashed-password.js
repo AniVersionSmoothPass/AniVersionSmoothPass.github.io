@@ -21,6 +21,8 @@ var hashed_pwd = (function() {
   var module = {};
 
   function SPH_HashedPassword(password, realm) {
+  console.log("In hashedPassword...\n");
+  console.log(typeof password);
   var hashedPassword = this._getHashedPassword(password, realm);
   this.toString = function() { return hashedPassword; }
   }
@@ -79,6 +81,8 @@ var hashed_pwd = (function() {
   }
 
   module.get_hashed_pwd = function(data,domain){
+    console.log("In hashed_pwd...\n");
+    console.log(typeof data);
     var result = new String( new SPH_HashedPassword(data,domain));
     return result;
   }
