@@ -274,16 +274,16 @@ var md5 = (function(){
     return str_md5(s);
   }
 
-  module.hex_hmac_md5 = function(s){
-    return hex_hmac_md5(s);
+  module.hex_hmac_md5 = function(key,data){
+    return hex_hmac_md5(key,data);
   }
 
-  module.b64_hmac_md5 = function(s){
-    return b64_hmac_md5(s);
+  module.b64_hmac_md5 = function(key,data){
+    return b64_hmac_md5(key,data);
   }
 
-  module.str_hmac_md5 = function(s){
-    return str_hmac_md5(s);
+  module.str_hmac_md5 = function(key,data){
+    return str_hmac_md5(key,data);
   }
 
   return module;
