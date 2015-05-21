@@ -5,6 +5,7 @@ var accountPage = (function() {
 	var updateListBool = true;
 
 	function isWebsite (web, cueList) {
+		console.log("isWebsite");
 		//check empty/same account entered
 		if (web == '') {
 			//display cannot be empty message
@@ -31,6 +32,7 @@ var accountPage = (function() {
 	}
 
 	function getAccountPwdRule(prefix) {
+		console.log("getAccountPwdRule");
 		//Each Account has a rule list 
 		//[maxLength, upper, lower, specialChar, number]
 		var length = parseInt($("#" + prefix + "PwdLength").val());
@@ -48,6 +50,7 @@ var accountPage = (function() {
 				speCharBool, numberBool, otherBool, ruleText];
 	}
 	function resetPwdRule() {
+		console.log("resetPwdRule");
 		var attribute;
 		//set pwd rule fresh for a new account
 		var fieldSet = [ $("#pwdUpper"), $("#pwdLower"),
@@ -70,6 +73,7 @@ var accountPage = (function() {
 		return;	
 	}
 	function processCueList(cueList) {
+		console.log("processCueList");
 		var j;
 		var result = [];
 		for (var i=0; i<cueList.length; i++) {
@@ -80,6 +84,7 @@ var accountPage = (function() {
 	}
 
 	function submitFunction (e) {
+		console.log("submitFunction");
 		if ( ((e.keyCode === 13) || (e.keyCode == undefined)) 
 				&& ($("#entry:focus")) ) {
 			e.preventDefault();
@@ -127,16 +132,19 @@ var accountPage = (function() {
 	}
 
 	function updateAccountListWrapper () {
+		console.log("updateAccountListWrapper");
 		//by rehearsal date?
 		renderAccountList(false);
 		return;
 	}
 
 	function updateStoryRefCount (webName, accountList) {
+		console.log("updateStoryRefCount");
 		//refer to page
 	}
 
 	function checkPassword (web, index) {
+		console.log("checkPassword");
 		//update rehearsal time
 		var date, record, story, storyList, newRuleList;
 		var answer = $('#' + web + 'Page').find('#' + web+'-password').val(); 
@@ -194,6 +202,7 @@ var accountPage = (function() {
 	}
 
 	function alertOnUpdate(account) {
+		console.log("alertOnUpdate");
 		//individual field names end in ..I
 		var checkBox;
 		var checkBoxes = ['upperI', 'lowerI' , 'specialI', 'numberI', 'otherI'];
@@ -207,6 +216,7 @@ var accountPage = (function() {
 		}
 	}
 	function generateRuleHTML(ruleList, account) {
+		console.log("generateRuleHTML");
 		var endString;
 		var prependStringList = [];
 		var stringList = [ "<div class='accountSlideBar'><label>\
@@ -289,6 +299,7 @@ var accountPage = (function() {
 	}
 
 	function parseStringToNestedArrays (stringOfArray) {
+		console.log("parseStringToNestedArrays");
 		var result = [];
 		for (var i=0; i < stringOfArray.length(); i++) {
 			var li = stringOfArray.get(i).split('|||'); 
@@ -298,6 +309,7 @@ var accountPage = (function() {
 	}
 	//returns the number of dictionary words in the typed string
 	function checkNumberOfWordsTyped (input) {
+		console.log("checkNumberOfWordsTyped");
 		var current = 0;
 		var stop = 0;
 		var numberOfWords = 0;
