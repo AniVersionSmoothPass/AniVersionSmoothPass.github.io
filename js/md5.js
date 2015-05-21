@@ -167,7 +167,7 @@ var md5 = (function(){
     console.log("at the core \n");
     console.log(typeof key);
     var bkey = str2binl(key);
-    console.log("is this a key problem? I guess not!\n")
+    console.log("is this a key problem? I guess not!\n");
     if(bkey.length > 16) bkey = core_md5(bkey, key.length * chrsz);
 
     var ipad = Array(16), opad = Array(16);
