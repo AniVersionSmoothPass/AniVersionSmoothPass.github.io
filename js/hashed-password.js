@@ -85,6 +85,8 @@ var hashed_pwd = (function() {
   module.get_hashed_pwd = function(data,domain){
     console.log("In hashed_pwd...\n");
     console.log(typeof data);
+    console.log("testing domain...");
+    console.log(typeof domain);
     var result = new String( new SPH_HashedPassword(data,domain));
     return result;
   }

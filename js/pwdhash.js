@@ -56,6 +56,8 @@ var pwdhash = (function () {
 
   module.simpleHash = function(data,domain){
     console.log(typeof data);
+    console.log("in pwdhash");
+    console.log(domain);
     var result = hashed_pwd.get_hashed_pwd(data,domain);
     return result;
   }
