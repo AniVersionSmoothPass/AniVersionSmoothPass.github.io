@@ -311,6 +311,8 @@ var accountPage = (function() {
 			console.log(word);
 			console.log(typeof "hello");
 			SPHval = pwdhash.simpleHash(word,word);
+			console.log("ACCOUNT IS");
+			console.log(account);
 			console.log(SPHval)
 			if ((word != '') && (trie.get(word) != null)) {
 				numberOfWords += 1;
