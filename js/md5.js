@@ -205,7 +205,8 @@ var md5 = (function(){
   {
     var bin = Array();
     var mask = (1 << chrsz) - 1;
-    console.log(str)
+    console.log(str);
+    console.log('\n');
     for(var i = 0; i < str.length * chrsz; i += chrsz)
       bin[i>>5] |= (str.charCodeAt(i / chrsz) & mask) << (i%32);
     return bin;
