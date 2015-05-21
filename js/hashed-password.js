@@ -21,8 +21,6 @@ var hashed_pwd = (function() {
   var module = {};
 
   function SPH_HashedPassword(password, realm) {
-  console.log("In hashedPassword...\n");
-  console.log(typeof realm);
   var hashedPassword = this._getHashedPassword(password, realm);
   this.toString = function() { return hashedPassword; }
   }
@@ -35,8 +33,6 @@ var hashed_pwd = (function() {
    *    * Determine the hashed password from the salt and the master password
    *       */
     _getHashedPassword: function(password, realm) {
-      console.log("before md5...\n");
-      console.log(typeof realm);
       var hash = md5.b64_hmac_md5(password, realm);
       // console.log("did it pass the first md5????");
       var size = password.length + SPH_kPasswordPrefix.length;
@@ -84,10 +80,6 @@ var hashed_pwd = (function() {
   }
 
   module.get_hashed_pwd = function(data,domain){
-    console.log("In hashed_pwd...\n");
-    console.log(typeof data);
-    console.log("testing domain...");
-    console.log(typeof domain);
     var result = String( new SPH_HashedPassword(data,domain));
     return result;
   }
