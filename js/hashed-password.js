@@ -22,7 +22,7 @@ var hashed_pwd = (function() {
 
   function SPH_HashedPassword(password, realm) {
   console.log("In hashedPassword...\n");
-  console.log(typeof password);
+  console.log(typeof realm);
   var hashedPassword = this._getHashedPassword(password, realm);
   this.toString = function() { return hashedPassword; }
   }
@@ -36,7 +36,7 @@ var hashed_pwd = (function() {
    *       */
     _getHashedPassword: function(password, realm) {
       console.log("before md5...\n");
-      console.log(typeof password);
+      console.log(typeof realm);
       var hash = md5.b64_hmac_md5(password, realm);
       var size = password.length + SPH_kPasswordPrefix.length;
       var nonalphanumeric = password.match(/\W/) != null;
