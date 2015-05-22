@@ -308,7 +308,7 @@ var accountPage = (function() {
 		return result;
 	}
 	//returns the number of dictionary words in the typed string
-	function checkNumberOfWordsTyped (input) {
+	function checkNumberOfWordsTyped (input,account) {
 		console.log("checkNumberOfWordsTyped");
 		var current = 0;
 		var stop = 0;
@@ -486,7 +486,7 @@ var accountPage = (function() {
 									var imageBox = $("#" + account + "Box");
 									console.log("ACCOUNT NAME IS...");
 									console.log(account);
-									var num = checkNumberOfWordsTyped(input)
+									var num = checkNumberOfWordsTyped(input,account);
 									imageBox.scrollLeft(400*num);
 								}
 							);
