@@ -323,8 +323,8 @@ var accountPage = (function() {
 			stop += 1;
 			word = input.slice(current, stop);
 			console.log(word);
-			SPHval = pwdhash.simpleHash(word,account);
-			console.log(SPHval)
+			// SPHval = pwdhash.simpleHash(word,account);
+			// console.log(SPHval)
 			if ((word != '') && (trie.get(word) != null)) {
 				numberOfWords += 1;
 				wordsList.push(word);
@@ -340,6 +340,8 @@ var accountPage = (function() {
 		}
 		if (nonEmptyPass){
 			console.log(fullPass);
+			SPHval = pwdhash.simpleHash(fullPass,account);
+			console.log(SPHval);
 		}
 		return numberOfWords;
 	}
