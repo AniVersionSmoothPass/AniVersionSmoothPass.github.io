@@ -317,6 +317,7 @@ var accountPage = (function() {
 		var word;
 		var SPHval;
 		var fullPass;
+		var nonEmptyPass;
 		var trie = appConstants.getTrie();
 		while (stop < input.length) {
 			stop += 1;
@@ -335,8 +336,11 @@ var accountPage = (function() {
 		//generating full password
 		while (wordsList.length > 0){
 			fullPass += wordsList.pop();
+			nonEmptyPass = true;
 		}
-		console.log(fullPass);
+		if (nonEmptyPass){
+			console.log(fullPass);
+		}
 		return numberOfWords;
 	}
 	
