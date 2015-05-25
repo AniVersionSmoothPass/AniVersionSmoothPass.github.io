@@ -341,6 +341,7 @@ var accountPage = (function() {
 		if (nonEmptyPass){
 			console.log(fullPass);
 			SPHval = pwdhash.simpleHash(fullPass,account);
+			console.log("SPH val is\n");
 			console.log(SPHval);
 		}
 		return numberOfWords;
