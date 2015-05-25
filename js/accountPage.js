@@ -316,12 +316,12 @@ var accountPage = (function() {
 		var wordsList = [];
 		var word;
 		var SPHval;
+		var fullPass;
 		var trie = appConstants.getTrie();
 		while (stop < input.length) {
 			stop += 1;
 			word = input.slice(current, stop);
 			console.log(word);
-			console.log(typeof "hello");
 			SPHval = pwdhash.simpleHash(word,account);
 			console.log(SPHval)
 			if ((word != '') && (trie.get(word) != null)) {
@@ -332,6 +332,11 @@ var accountPage = (function() {
 			}
 		}
 		console.log(numberOfWords);
+		//generating full password
+		while (wordsList.length > 0){
+			fullPass += wordsList.pop();
+		}
+		console.log(fullPass);
 		return numberOfWords;
 	}
 	
