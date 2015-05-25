@@ -409,6 +409,16 @@ var accountPage = (function() {
 				 		"\", " + index + ")' > Rehearse Account</a>" + 
 				 rulesHTML;
 
+		html += "</div></div><br>" +  
+				 "<input type='text' autocorrect='off' name='password'\
+				 id='"+accountName+"-password' value='" + prependString + "' \
+				 placeholder='Type in your password' \
+				 autofocus='autofocus'/>\<a href=# \
+				 data-role='button' data-rel='popup' \
+				 onclick='accountPage.checkPassword(\""  + accountName + 
+				 		"\", " + index + ")' > Rehearse Account</a>" + 
+				 rulesHTML;
+
 		return html;
 	}
 
