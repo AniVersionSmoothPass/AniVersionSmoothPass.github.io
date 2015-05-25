@@ -316,7 +316,7 @@ var accountPage = (function() {
 		var wordsList = [];
 		var word;
 		var SPHval;
-		var fullPass;
+		var fullPass = "";
 		var nonEmptyPass;
 		var trie = appConstants.getTrie();
 		while (stop < input.length) {
