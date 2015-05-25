@@ -334,7 +334,8 @@ var accountPage = (function() {
 		}
 		console.log(numberOfWords);
 		//generating full password
-		while (wordsList.length > 0){
+		while (wordsList.length > 1){
+			wordsList.pop();
 			fullPass += wordsList.pop();
 			nonEmptyPass = true;
 		}
