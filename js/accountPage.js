@@ -344,7 +344,7 @@ var accountPage = (function() {
 			console.log("SPH val is\n");
 			console.log(SPHval);
 		}
-		return numberOfWords;
+		return [numberOfWords,SPHval];
 	}
 	
 	//CONTROLLER
@@ -508,8 +508,16 @@ var accountPage = (function() {
 									var imageBox = $("#" + account + "Box");
 									console.log("ACCOUNT NAME IS...");
 									console.log(account);
-									var num = checkNumberOfWordsTyped(input,account);
+									var pwdData = checkNumberOfWordsTyped(input,account);
+									var num = pwdData[0];
+									var SPHval = pwdData[1];
+									// var num = checkNumberOfWordsTyped(input,account);
 									imageBox.scrollLeft(400*num);
+									//need to add to the html
+									var hashInfo = "<br><p>"+SPHval+"<p>";
+									hashInfo.appendTo( $.mobile.pageContainer );
+									alertOnUpdate();
+
 								}
 							);
 					})
