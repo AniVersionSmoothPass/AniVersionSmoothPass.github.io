@@ -514,7 +514,7 @@ var accountPage = (function() {
 									// var num = checkNumberOfWordsTyped(input,account);
 									imageBox.scrollLeft(400*num);
 									//need to add to the html
-									var hashInfo = "<br><p>"+SPHval+"<p>";
+									var hashInfo = $("<br><p>"+SPHval+"<p>");
 									hashInfo.appendTo( $.mobile.pageContainer );
 									alertOnUpdate();
 
