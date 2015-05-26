@@ -399,14 +399,14 @@ var accountPage = (function() {
 		rulesHTML = resultList[0];
 		prependString = resultList[1];
 
-		html += "</div></div><br>" +  
-				 "<input type='text' autocorrect='off' name='password'\
-				 id='"+accountName+"-password' value='" + prependString + "' \
-				 placeholder='Type in your password' \
-				 autofocus='autofocus'/>\<a href=# \
-				 data-role='button' data-rel='popup' \
-				 onclick='accountPage.checkPassword(\""  + accountName + 
-				 		"\", " + index + ")' > Rehearse Account</a>";
+		// html += "</div></div><br>" +  
+		// 		 "<input type='text' autocorrect='off' name='password'\
+		// 		 id='"+accountName+"-password' value='" + prependString + "' \
+		// 		 placeholder='Type in your password' \
+		// 		 autofocus='autofocus'/>\<a href=# \
+		// 		 data-role='button' data-rel='popup' \
+		// 		 onclick='accountPage.checkPassword(\""  + accountName + 
+		// 		 		"\", " + index + ")' > Rehearse Account</a>";
 
 		html += "</div></div><br>" +  
 				 "<input type='text' autocorrect='off' name='password'\
@@ -417,6 +417,7 @@ var accountPage = (function() {
 				 onclick='accountPage.checkPassword(\""  + accountName + 
 				 		"\", " + index + ")' > Rehearse Account</a>" + 
 				 rulesHTML;
+		html += "<p>This text is normal.</p>";
 
 		return html;
 	}
