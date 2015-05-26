@@ -417,7 +417,7 @@ var accountPage = (function() {
 				 onclick='accountPage.checkPassword(\""  + accountName + 
 				 		"\", " + index + ")' > Rehearse Account</a>" + 
 				 rulesHTML;
-		html += "<p>This text is normal.</p>";
+		html += "<p><br>This text is normal.</p>";
 
 		return html;
 	}
