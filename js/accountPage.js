@@ -516,7 +516,7 @@ var accountPage = (function() {
 									console.log(num);
 									console.log("sphval is "+SPHval);
 									if (num == 6){
-										var newBox = $("<p><br>" + SPHval +"</p>");
+										var newBox = $("<p><br>" + SPHval +"</p></div>");
 										// var newBox = $("<div class='boxed'>\
 										// 	Hello there!! </div>");
 										newBox.appendTo( $.mobile.pageContainer );
