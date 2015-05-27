@@ -368,7 +368,7 @@ var accountPage = (function() {
 		//create html for each page
 		var html = "<div id='" + accountName + "Box' class='horizontal'>\
 				<div id='" + accountName + "Stories' class='table'>";
-		html += "<div id=SPHvalBox' class='horizontal'>";
+		// html += "<div id=SPHvalBox' class='horizontal'>";
 		for (var i=0; i < list.length; i ++) {
 			if (i % 2 == 0) {
 				var liold = "\
@@ -515,8 +515,13 @@ var accountPage = (function() {
 									console.log("num is ");
 									console.log(num);
 									console.log("sphval is "+SPHval);
-									var hashBox = $("#"+SPHval+"Box");
-									hashBox.scrollLeft(400);
+									if (num == 1){
+										var newBox = $("<div class='boxed'>
+											Hello there!! </div>");
+										newBox.appendTo( $.mobile.pageContainer );
+									}
+									// var hashBox = $("#"+SPHval+"Box");
+									// hashBox.scrollLeft(400);
 									// var num = checkNumberOfWordsTyped(input,account);
 									imageBox.scrollLeft(400*num);
 									//need to add to the html
