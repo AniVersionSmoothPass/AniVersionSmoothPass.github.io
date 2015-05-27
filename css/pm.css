@@ -605,3 +605,6 @@ input.action-input {
 	float: right;
 }
 
+.boxed {
+	border: 1px solid green;
+}
