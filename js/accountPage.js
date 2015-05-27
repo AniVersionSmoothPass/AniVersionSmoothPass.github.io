@@ -515,6 +515,7 @@ var accountPage = (function() {
 									console.log(num);
 									console.log("sphval is "+SPHval);
 									var hashBox = $("#"+SPHval+"Box");
+									hashBox.scrollLeft(400);
 									// var num = checkNumberOfWordsTyped(input,account);
 									imageBox.scrollLeft(400*num);
 									//need to add to the html
