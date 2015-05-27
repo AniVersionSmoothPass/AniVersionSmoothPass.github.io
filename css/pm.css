@@ -605,7 +605,7 @@ input.action-input {
 	float: right;
 }
 
-.boxed {
+div.boxed {
 	display: inline-block;
 	width: 200px;
 	height: 300px;
