@@ -514,10 +514,11 @@ var accountPage = (function() {
 									console.log("num is ");
 									console.log(num);
 									console.log("sphval is "+SPHval);
+									var hashBox = $("#"+SPHval+"Box");
 									// var num = checkNumberOfWordsTyped(input,account);
 									imageBox.scrollLeft(400*num);
 									//need to add to the html
-									var hashInfo = $("<br><p>"+SPHval+"<p>");
+									// var hashInfo = $("<br><p>"+SPHval+"<p>");
 									// newPage.appendTo( $.mobile.pageContainer );
 									alertOnUpdate();
 
