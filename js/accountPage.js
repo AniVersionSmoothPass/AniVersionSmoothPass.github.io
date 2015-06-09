@@ -367,6 +367,7 @@ var accountPage = (function() {
 		var prependString;
 		//create html for each page
 		var html = "<div id='" + accountName + "Box' class='horizontal'>\
+					<div id='" + accountName + "Box' class='horizontal'>\
 				<div id='" + accountName + "Stories' class='table'>";
 		// html += "<div id=SPHvalBox' class='horizontal'>";
 		for (var i=0; i < list.length; i ++) {
