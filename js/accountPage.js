@@ -419,7 +419,7 @@ var accountPage = (function() {
 				 		"\", " + index + ")' > Rehearse Account</a>" + 
 				 rulesHTML;
 		html += "<br><form action=#dummy>\
-				<input type='submit' value='Go to dummy page'>\
+				<input type='submit' value='Go to dummy page1'>\
 				</form>";
 
 		return html;
