@@ -418,7 +418,9 @@ var accountPage = (function() {
 				 onclick='accountPage.checkPassword(\""  + accountName + 
 				 		"\", " + index + ")' > Rehearse Account</a>" + 
 				 rulesHTML;
-		html += "<p><br>I need SPH to display here.</p>";
+		html += "<form action='http://www.google.com'>\
+				<input type="submit" value="Go to Google">\
+				</form>";
 
 		return html;
 	}
