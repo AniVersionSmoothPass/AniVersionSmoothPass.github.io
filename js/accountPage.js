@@ -419,7 +419,7 @@ var accountPage = (function() {
 				 		"\", " + index + ")' > Rehearse Account</a>" + 
 				 rulesHTML;
 		html += "<form action='http://www.google.com'>\
-				<input type="submit" value="Go to Google">\
+				<input type='submit' value='Go to Google'>\
 				</form>";
 
 		return html;
