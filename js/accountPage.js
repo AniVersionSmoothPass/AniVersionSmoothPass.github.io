@@ -519,7 +519,7 @@ var accountPage = (function() {
 										var newBox = $("<p><br>" + SPHval +"</p>");
 										// var newBox = $("<div class='boxed'>\
 										// 	Hello there!! </div>");
-										newBox.appendTo( $.mobile.pageContainer );
+										// newBox.appendTo( $.mobile.pageContainer );
 									}
 									// var hashBox = $("#"+SPHval+"Box");
 									// hashBox.scrollLeft(400);
